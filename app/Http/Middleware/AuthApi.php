@@ -18,7 +18,9 @@ class AuthApi extends BaseMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         try {
-            $user = JWTAuth::parseToken()->authenticate();
+            if (JWTAuth::parseToken()->authenticate()) {
+                return $next($request); 
+            }
         } catch (Exception $e) {
             if ($e instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
                 return response()->json(['status' => 'Token is Invalid']);

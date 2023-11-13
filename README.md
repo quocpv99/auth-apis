@@ -9,7 +9,8 @@ Install
 
 ####
 --- composer require tymon/jwt-auth
---- php artisan jwt:generate
+--- php artisan jwt:secret
+####
 3: .env.example  to .env  => config database
 
 4: php artisan key:generate
